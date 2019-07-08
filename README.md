@@ -77,12 +77,6 @@ _This script will help to select what flag you want_
 ```bash
 wget https://raw.githubusercontent.com/yaroslavvb/stuff/master/configure_tf.sh
 ```
-/root/$tffolder/.venv/bin/python
-gcc 7.4.0
-
--march=silvermont -mcx16 -mssse3 -msse4.1 -msse4.2 -mpopcnt -mno-avx
-
-bazel build --config=opt --copt=-march=silvermont --copt=-mcx16 --copt=-mssse3 --copt=-msse4.1 --copt=-msse4.2 --copt=-mpopcnt --copt=-mno-avx -k //tensorflow/tools/pip_package:build_pip_package
 
 ### 4.1 Build Tensorflow
 
@@ -93,7 +87,8 @@ export date="20190707"
 ./configure
 bazel build $flags //tensorflow/tools/pip_package:build_pip_package
 ```
-_Note: Wait until +5,000 files are compiled_
+_Note 1: Flags used are: `-march=silvermont -mcx16 -mssse3 -msse4.1 -msse4.2 -mpopcnt -mno-avx`_
+_Note 2: Wait until 28,542 files are compiled. You can even take some vacations :D_
 
 ### 4.2 Build the package
 
